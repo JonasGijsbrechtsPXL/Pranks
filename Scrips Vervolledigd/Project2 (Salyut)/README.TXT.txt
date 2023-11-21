@@ -6,10 +6,8 @@ Copy map to "C:\"
 enter:
 "Set-ExecutionPolicy RemoteSigned"
 "A"
-
-2.
-Run "SetUp.ps1"
-*right click, then "powershell"
+"cd C:\Project2 (Salyut)"
+".\SetUp.ps1
 
 3.
 Have Fun!
