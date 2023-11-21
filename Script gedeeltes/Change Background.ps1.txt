@@ -1,0 +1,16 @@
+$imagePath = "C:\TEST\USSR.png"
+
+Add-Type @"
+    using System;
+    using System.Runtime.InteropServices;
+
+    public class Wallpaper {
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        public static extern int SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
+    }
+"@
+
+$SPI_SETDESKWALLPAPER = 0x0014
+$SPIF_UPDATEINIFILE = 0x01
+
+[Wallpaper]::SystemParametersInfo($SPI_SETDESKWALLPAPER, 0, $imagePath, $SPIF_UPDATEINIFILE)

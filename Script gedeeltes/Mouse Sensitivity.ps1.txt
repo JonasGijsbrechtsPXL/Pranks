@@ -1,0 +1,10 @@
+# Define the desired cursor speed (adjust the value as needed)
+$cursorSpeed = 1
+
+# Set the registry key for cursor speed
+$registryPath = "HKCU:\Control Panel\Mouse"
+$registryName = "MouseSpeed"
+Set-ItemProperty -Path $registryPath -Name $registryName -Value $cursorSpeed
+
+# Log off and log on to apply the changes
+shutdown.exe /l

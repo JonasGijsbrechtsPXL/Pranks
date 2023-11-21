@@ -1,0 +1,26 @@
+# Define the language, keyboard layout, and speech language
+$language = "ru-RU"
+$keyboardLayout = "00000419"
+$speechLanguage = "ru-RU"
+
+# Set the user language list
+Set-WinUserLanguageList -LanguageList $language -Force
+
+# Set the keyboard layout
+Set-WinDefaultInputMethodOverride -InputMethodId $keyboardLayout -LanguageTag $language -Force
+
+# Set the system locale (language for non-Unicode programs)
+Set-WinSystemLocale -SystemLocale $language -Force
+
+# Set the UI language (display language)
+Set-WinUILanguageOverride -Language $language -Force
+
+# Set the speech language
+Set-WinSpeechLanguage -LanguageTag $speechLanguage -Force
+
+# Display the current language, keyboard layout, and speech language
+Get-WinUserLanguageList
+Get-WinDefaultInputMethodOverride
+Get-WinSystemLocale
+Get-WinUILanguageOverride
+Get-WinSpeechLanguage
