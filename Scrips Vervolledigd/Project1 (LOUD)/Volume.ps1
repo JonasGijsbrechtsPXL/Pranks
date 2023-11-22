@@ -2,7 +2,7 @@ function set_AudioLevel($audioLevel){$wshShell = new-object -com wscript.shell; 
 $audioLevel = $audioLevel / 2;100..$audioLevel | % {$wshShell.SendKeys([char]175)}}
 
 $url = "https://www.youtube.com/watch?v=BGUUjqL3Tgw&t=789s&ab_channel=nubileasmr"
-
+$lockScreenMessage = "Awhyaaaaaaaaa, chu papi munyonyo..."
 
 $AppName = "Chrome.exe"
 
