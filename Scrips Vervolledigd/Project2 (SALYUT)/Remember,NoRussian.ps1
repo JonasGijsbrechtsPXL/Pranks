@@ -24,6 +24,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $url = "https://www.youtube.com/watch?v=U06jlgpMtQs&ab_channel=rascrifice"
 
 # Infinite loop
+Start-Sleep -Seconds 300
 
 set_AudioLevel -Volume 100
 $speak.Speak('Salut my friend, You will join the comunism. in minus 10 seconds. 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 0, 0. Welcome!')
