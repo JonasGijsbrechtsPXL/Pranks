@@ -8,20 +8,17 @@ $speak = New-Object System.Speech.Synthesis.SpeechSynthesizer
 
 
 #Background
-$imagePath = "C:\Project2 (Salyut)\USSR.png"
+# URL of the image you want to download
+$imageUrl = "https://cdn.britannica.com/36/22536-050-E22B1D13/Flag-Union-of-Soviet-Socialist-Republics.jpg"
 
-Add-Type @"
-    using System;
-    using System.Runtime.InteropServices;
+# Local path to save the downloaded image in the temp directory
+$localImagePath = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), "USSR.jpg")
 
-    public class Wallpaper {
-        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-        public static extern int SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
-    }
-"@
+# Download the image
+Invoke-WebRequest -Uri $imageUrl -OutFile $localImagePath -UseBasicParsing
 
-$SPI_SETDESKWALLPAPER = 0x0014
-$SPIF_UPDATEINIFILE = 0x01
+# Set the wallpaper
+Add-Type -AssemblyName System.Windows.Forms
 
 #USSR Anthem
 $url = "https://www.youtube.com/watch?v=U06jlgpMtQs&ab_channel=rascrifice"
@@ -32,10 +29,14 @@ set_AudioLevel -Volume 100
 $speak.Speak('Salut my friend, You will join the comunism. in minus 10 seconds. 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 0, 0. Welcome!')
 set_AudioLevel -Volume 100
 
-[Wallpaper]::SystemParametersInfo($SPI_SETDESKWALLPAPER, 0, $imagePath, $SPIF_UPDATEINIFILE)
+[System.Windows.Forms.SystemInformation]::Wallpaper = $localImagePath
 
 while ($true) {
     set_AudioLevel -Volume 100
     Start-Process $url
     Start-Sleep -Seconds (10 * 60)
 }
+
+
+
+
